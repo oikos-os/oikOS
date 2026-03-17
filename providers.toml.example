@@ -1,0 +1,69 @@
+# oikOS Provider Configuration
+# Copy to providers.toml and customize.
+# API keys are NEVER stored here — use environment variables or .env file.
+#
+# Doctrine: "The cloud is a loan. Local is sovereignty."
+# Default is always local. NEVER_LEAVE content stays local regardless of config.
+
+[general]
+default = "local"          # Default provider (local-first per doctrine)
+posture = "balanced"       # conservative | balanced | aggressive
+fallback = "local"         # Always local Ollama, non-configurable
+
+[providers.local]
+type = "ollama"
+base_url = "http://localhost:11434"
+default_model = "qwen2.5:14b"
+timeout = 60
+
+[providers.claude]
+type = "anthropic"
+default_model = "claude-sonnet-4-20250514"
+max_tokens = 4096
+# Requires: ANTHROPIC_API_KEY environment variable
+
+[providers.gemini]
+type = "gemini"
+default_model = "gemini-2.5-pro"
+# Requires: GEMINI_API_KEY environment variable
+
+[providers.openai]
+type = "openai"
+base_url = "https://api.openai.com/v1"
+default_model = "gpt-4o"
+max_tokens = 4096
+timeout = 120
+# Requires: OPENAI_API_KEY environment variable
+
+[providers.litellm]
+type = "litellm"
+default_model = "gpt-4o"
+# Requires: pip install oikos[cloud]
+
+# Adaptive model selection (OPT-01)
+# Routes queries to appropriate model size by complexity.
+[model_tiers]
+simple = "qwen2.5:7b"       # Fast, free — basic queries
+moderate = "qwen2.5:14b"    # Default local — most queries
+complex = "gemini-2.5-pro"  # Cloud — deep reasoning
+
+# Per-provider cost rates (USD per 1M tokens) for OPT-06 tracking
+[costs.local]
+input = 0.0
+output = 0.0
+
+[costs.claude]
+input = 3.0
+output = 15.0
+
+[costs.gemini]
+input = 1.25
+output = 5.0
+
+[costs.openai]
+input = 2.5
+output = 10.0
+
+[costs.litellm]
+input = 2.5
+output = 10.0

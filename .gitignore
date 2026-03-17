@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+venv/
+.venv/
+
+# LanceDB (derived index, rebuild from vault)
+memory/lancedb/
+
+# Environment
+.env
+.env.local
+*.key
+*.pem
+credentials.*
+
+# Node (if applicable)
+node_modules/
+
+# OS artifacts
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Temp files
+*.tmp
+*.bak
+*.log
+
+# Diagnostic / one-off scripts
+*.ps1
+*_diagnostic_output*.txt
+
+# Runtime settings (user-local)
+settings.json
+
+# Frontend build artifacts
+frontend/tsconfig.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Staging (temp downloads, in-progress work — never indexed/committed)
+staging/*
+!staging/.gitkeep
+
+# Claude Code
+.claude/*
+!.claude/agents/
+
+# Provider config (user-specific, no secrets but user-customized)
+providers.toml
+
+# Runtime state (regenerated on use)
+core/credits.json
+logs/pii/
+logs/routing/
+logs/daemon.pid
+logs/activity_schedule.json
+logs/sessions/.current_session.json
+logs/sessions/*SESSION-*.jsonl
+
+# Messages (moved to D:\COMMAND\messages\)
+messages/

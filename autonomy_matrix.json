@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "actions": {
+    "read_file": {"category": "SAFE"},
+    "search_files": {"category": "SAFE"},
+    "check_status": {"category": "SAFE"},
+    "read_web": {"category": "SAFE"},
+    "vault_search": {"category": "SAFE"},
+    "write_file": {"category": "ASK_FIRST", "scope": ["staging/*"]},
+    "browser_form": {"category": "ASK_FIRST"},
+    "send_message": {"category": "ASK_FIRST"},
+    "external_api_write": {"category": "ASK_FIRST"},
+    "external_api_call": {"category": "ASK_FIRST"},
+    "delete_vault": {"category": "PROHIBITED"},
+    "modify_identity": {"category": "PROHIBITED"},
+    "modify_source": {"category": "PROHIBITED"},
+    "financial_transaction": {"category": "PROHIBITED"},
+    "external_api_destructive": {"category": "PROHIBITED"},
+    "move_file": {"category": "ASK_FIRST"},
+    "list_directory": {"category": "SAFE"}
+  }
+}
