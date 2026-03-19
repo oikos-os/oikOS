@@ -1,0 +1,5 @@
+[allowlist]
+  description = "Test fixtures with fake credentials are not real secrets"
+  paths = [
+    '''tests/.*\.py''',
+  ]

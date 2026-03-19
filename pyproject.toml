@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=70.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oikos-omega"
+version = "1.7.0"
+description = "OIKOS_OMEGA — Sovereign Memory Retrieval Layer"
+requires-python = ">=3.12"
+dependencies = [
+    "lancedb>=0.20",
+    "ollama>=0.4",
+    "pydantic>=2.0",
+    "tiktoken>=0.8",
+    "click>=8.1",
+    "rich>=13.0",
+    "anthropic>=0.45",
+    "google-genai>=0.5",
+    "python-dotenv>=1.0",
+    "presidio-analyzer>=2.2",
+    "presidio-anonymizer>=2.2",
+    "spacy>=3.7",
+    "pandas>=2.0",
+    "pyarrow>=14.0",
+    "word2number>=1.1",
+    "nvidia-ml-py>=12.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "httpx>=0.27",
+    "mcp>=1.23",
+    "pyfiglet>=0.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+cloud = [
+    "litellm>=1.40",
+]
+
+[project.scripts]
+oikos = "core.interface.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["core*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

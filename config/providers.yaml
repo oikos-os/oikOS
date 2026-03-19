@@ -1,0 +1,35 @@
+# oikOS Multi-Provider Configuration (T-037)
+# Modify via CLI: oikos provider set <key> <value>
+# Or edit this file directly (changes require restart)
+
+version: "1.0"
+
+routing:
+  posture: balanced          # conservative | balanced | aggressive
+  default_provider: local
+  fallback_chain: [local, claude, gemini]
+
+providers:
+  local:
+    type: ollama
+    model: qwen2.5:14b
+    base_url: http://localhost:11434
+    embed_model: nomic-embed-text:v1.5
+
+  claude:
+    type: anthropic
+    model: claude-sonnet-4-20250514
+    api_key_env: ANTHROPIC_API_KEY
+    max_tokens: 4096
+
+  gemini:
+    type: gemini
+    model: gemini-2.5-pro
+    api_key_env: GEMINI_API_KEY
+    max_tokens: 4096
+
+privacy:
+  vault_identity_tier: NEVER_LEAVE   # HARDCODED — not configurable
+  vault_knowledge_tier: SENSITIVE
+  session_data_tier: SENSITIVE
+  general_queries_tier: SAFE

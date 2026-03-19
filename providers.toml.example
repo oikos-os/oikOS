@@ -1,0 +1,116 @@
+# oikOS Provider Configuration
+# Copy this file to providers.toml and configure your preferred models.
+# oikOS is model-agnostic — use local models, cloud models, or both.
+
+# ============================================================
+# LOCAL PROVIDERS (default — free, private, no API key needed)
+# ============================================================
+
+[providers.ollama]
+enabled = true
+base_url = "http://localhost:11434"
+default_model = "llama3.1:8b"          # Any Ollama model works
+# Popular choices:
+#   llama3.1:8b      — fast, good for simple tasks
+#   llama3.1:70b     — powerful, needs ~40GB RAM
+#   qwen2.5:14b      — strong reasoning, 14B params
+#   mistral:7b       — fast, good instruction following
+#   codellama:13b    — code-focused
+#   deepseek-r1:14b  — reasoning model
+#   phi3:14b         — Microsoft's compact model
+
+# ============================================================
+# CLOUD PROVIDERS (opt-in — requires API keys)
+# ============================================================
+# Cloud providers are OPTIONAL. oikOS works fully offline with just Ollama.
+# If enabled, oikOS routes complex queries to cloud when local confidence is low.
+# Data classified as NEVER_LEAVE will NEVER be sent to cloud providers.
+
+[providers.anthropic]
+enabled = false
+api_key_env = "ANTHROPIC_API_KEY"      # Set in your .env file
+default_model = "claude-sonnet-4-20250514"
+
+[providers.openai]
+enabled = false
+api_key_env = "OPENAI_API_KEY"
+default_model = "gpt-4o"
+
+[providers.google]
+enabled = false
+api_key_env = "GOOGLE_API_KEY"
+default_model = "gemini-2.0-flash"
+
+# ============================================================
+# GENERIC OPENAI-COMPATIBLE (LM Studio, vLLM, text-gen-webui)
+# ============================================================
+
+[providers.generic]
+enabled = false
+base_url = "http://localhost:1234/v1"  # Your local server
+api_key_env = "GENERIC_API_KEY"        # If required
+default_model = "my-model"
+
+# ============================================================
+# LOCAL BACKEND EXAMPLES
+# ============================================================
+# Any server that exposes an OpenAI-compatible API at /v1/chat/completions
+# works with oikOS via the generic provider. Here are common setups:
+
+# --- llama.cpp server ---
+# Start: llama-server -m model.gguf --port 8080
+# [providers.generic]
+# enabled = true
+# base_url = "http://localhost:8080/v1"
+# default_model = "llama-3.1-8b"
+
+# --- LM Studio ---
+# Start: Open LM Studio, load model, enable local server
+# [providers.generic]
+# enabled = true
+# base_url = "http://localhost:1234/v1"
+# default_model = "loaded-model"
+
+# --- vLLM ---
+# Start: vllm serve meta-llama/Llama-3.1-8B-Instruct --port 8000
+# [providers.generic]
+# enabled = true
+# base_url = "http://localhost:8000/v1"
+# default_model = "Llama-3.1-8B-Instruct"
+
+# --- SGLang ---
+# Start: python -m sglang.launch_server --model-path model --port 30000
+# [providers.generic]
+# enabled = true
+# base_url = "http://localhost:30000/v1"
+# default_model = "model-name"
+
+# --- ExLlamaV2/V3 (via TabbyAPI) ---
+# Start: python main.py --model-dir model-dir --port 5000
+# [providers.generic]
+# enabled = true
+# base_url = "http://localhost:5000/v1"
+# default_model = "model-name"
+
+# --- TensorRT-LLM (via Triton) ---
+# Start: (complex setup — see NVIDIA docs)
+# [providers.generic]
+# enabled = true
+# base_url = "http://localhost:8000/v1"
+# default_model = "model-name"
+
+# --- LocalAI ---
+# Start: docker run -p 8080:8080 localai/localai
+# [providers.generic]
+# enabled = true
+# base_url = "http://localhost:8080/v1"
+# default_model = "model-name"
+
+# ============================================================
+# ROUTING CONFIGURATION
+# ============================================================
+
+[routing]
+default_provider = "ollama"            # Where queries go by default
+cloud_fallback = false                 # Set true to route complex queries to cloud
+complexity_threshold = 0.7             # Above this → cloud (if enabled)

@@ -1,0 +1,16 @@
+.git
+.venv
+.env
+.env.*
+__pycache__
+*.pyc
+.pytest_cache
+.claude
+staging
+logs
+tests
+docs
+node_modules
+.semgrep
+brand/SpaceGrotesk-Bold.otf
+*.egg-info

@@ -1,0 +1,27 @@
+{
+  "id": "home",
+  "name": "Home",
+  "description": "Default room with full vault access and all tools.",
+  "vault_scope": {
+    "mode": "all",
+    "paths": [],
+    "tags": []
+  },
+  "toolsets": null,
+  "autonomy": {
+    "overrides": {}
+  },
+  "model": {
+    "provider": null,
+    "model": null,
+    "fallback_provider": null,
+    "fallback_model": null
+  },
+  "voice": {
+    "system_prompt": null,
+    "personality": null,
+    "temperature": null
+  },
+  "created_at": "2026-03-18T03:11:56.634718Z",
+  "updated_at": "2026-03-18T03:11:56.634718Z"
+}
