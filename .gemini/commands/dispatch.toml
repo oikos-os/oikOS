@@ -1,0 +1,12 @@
+description = "Create a cross-instance message to another KAIROS node"
+
+prompt = """Create a cross-instance dispatch message.
+
+RULES:
+- Save to messages/ directory in a date subfolder (YYYY-MM-DD/, create if needed)
+- Filename format: FROM_ENGINEER_TO_{RECIPIENT}_{DATE}.md
+- Valid recipients: SOVEREIGN, SYNTH, ARCHITECT, ALL_NODES
+- Include: STATUS (PENDING/INFORMATIONAL), subject, body, any action items
+- If multiple messages to the same recipient on the same date exist, append suffix _2, _3 etc.
+
+Message details: {{args}}"""

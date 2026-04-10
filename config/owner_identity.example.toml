@@ -1,0 +1,89 @@
+# owner_identity — PII defense configuration for oikOS
+#
+# This file parameterizes the PII defense layer (content classifier, PII
+# whitelist, complexity scorer, confidence scorer, gauntlet probes, and
+# FileAgent path scope) with values specific to the operator of this
+# oikOS instance. Without it the system boots with an empty-owner profile:
+# PII defense still runs on generic heuristics, but owner-specific
+# whitelisting, entity boosts, and vault paths are disabled.
+#
+# SETUP:
+#   1. Copy this file to `config/owner_identity.toml`
+#   2. Replace placeholder values with your own
+#   3. `config/owner_identity.toml` is gitignored — it never leaves this machine
+#
+# All sections are optional. Omitted keys fall back to empty lists.
+
+[owner]
+# Your primary identity. Used to tune PII detection and gauntlet probes.
+full_name  = "Your Full Name"
+first_name = "YourFirstName"
+
+# Short names you go by (artist handles, nicknames, personas). These get
+# added to the PII whitelist so presidio doesn't misclassify them as
+# random PERSON entities that need scrubbing.
+nicknames  = ["YourNickname"]
+
+# Usernames / handles across services (GitHub, forums, etc.). These are
+# added to the NEVER_LEAVE pattern set — any appearance routes the query
+# to local inference regardless of tier.
+usernames  = ["your_username"]
+
+# Email addresses tied to your identity. Treated like usernames.
+emails     = ["you@example.com"]
+
+# Deprecated internal project codenames that should never leak to cloud
+# providers. These are added to NEVER_LEAVE patterns as an extra
+# guardrail during a rename / migration.
+deprecated_systems = []
+
+[paths]
+# Root directory of your personal knowledge vault, if separate from the
+# oikOS repo's `vault/` dir. Optional — leave empty if you don't maintain
+# a sovereign vault outside the repo.
+vault_root = ""
+
+# FileAgent scope map. Keys are absolute directory paths, values are
+# "READ" or "READ_WRITE". The FileAgent will refuse any operation
+# outside this map. Omit or leave empty to disable FileAgent entirely.
+[paths.file_agent]
+# "D:/path/to/your/vault"     = "READ"
+# "D:/path/to/your/workspace" = "READ_WRITE"
+
+[complexity]
+# Domain keyword sets used by the complexity scorer to detect
+# cross-domain queries (which get routed to cloud). Each section is a
+# domain name; keywords are the vocabulary that maps a query into it.
+#
+# Example:
+#   [complexity.domains.music]
+#   keywords = ["chord", "melody", "mixing", "daw"]
+#
+#   [complexity.domains.finance]
+#   keywords = ["portfolio", "allocation", "hedge", "yield"]
+[complexity.domains]
+
+[confidence]
+# Entity phrases that indicate your vault content was successfully
+# retrieved during RAG. Their presence in a response boosts the
+# confidence score (signals that the model grounded in your data,
+# not its training set).
+vault_entities = []
+
+[gauntlet]
+# Identity baseline probe — the gauntlet asks the system "who is the
+# operator?" and expects these keywords in the response. Leave
+# identity_name empty to skip this probe entirely.
+identity_name     = ""
+identity_keywords = []
+
+# PII refusal probe — asks "how old is <operator>?" and expects a
+# refusal. Leave empty to skip.
+age_probe_query    = ""
+age_probe_forbidden = []
+
+# Deprecated-system avoidance probe — asks "Explain <deprecated_name>"
+# and expects the system to refuse or echo-refuse. Pulls from
+# owner.deprecated_systems[0] if set; override here to pick a different
+# one.
+deprecated_system_probe_query = ""

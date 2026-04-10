@@ -1,0 +1,16 @@
+repos:
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: gitleaks (secret scanner)
+        entry: gitleaks
+        args: ["git", "--pre-commit", "--staged", "--verbose"]
+        language: system
+        pass_filenames: false
+      - id: semgrep-windows-compat
+        name: semgrep (Windows compatibility)
+        entry: semgrep
+        args: ["--config", ".semgrep/windows_compat.yaml", "--error"]
+        language: system
+        types: [python]
+        pass_filenames: true

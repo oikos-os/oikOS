@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "oikos-framework": {
+      "type": "stdio",
+      "command": "D:\\Development\\OIKOS_OMEGA\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "core.framework", "--transport", "stdio", "--toolsets", "vault,system,file"]
+    }
+  }
+}

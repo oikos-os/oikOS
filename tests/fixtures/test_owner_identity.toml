@@ -1,0 +1,46 @@
+# Test fixture for owner_identity. Loaded by tests/conftest.py via the
+# OIKOS_OWNER_IDENTITY_PATH env var so unit/integration tests run with a
+# known owner profile regardless of the developer's local config.
+
+[owner]
+full_name  = "Alice TestUser"
+first_name = "Alice"
+nicknames  = ["TestUser", "testuser"]
+usernames  = ["testuser123"]
+emails     = ["alice@example.com"]
+deprecated_systems = ["LEGACY_SYSTEM"]
+
+[paths]
+vault_root = "/tmp/test_vault"
+
+[paths.file_agent]
+"/tmp/test_vault" = "READ"
+"/tmp/test_staging" = "READ_WRITE"
+# The framework_tools test suites reference D:/COMMAND as a well-known
+# test mount point. These are synthetic test paths, not operator-specific
+# directories — they only exist in the test fixture, not in production.
+"D:/COMMAND" = "READ"
+"D:/COMMAND/staging" = "READ_WRITE"
+"D:/COMMAND/messages" = "READ_WRITE"
+
+[complexity.domains.music]
+keywords = ["guitar", "melody", "testuser", "reggaeton", "industrial"]
+
+[complexity.domains.literature]
+keywords = ["novel", "character", "plot"]
+
+[confidence]
+vault_entities = [
+    "test project",
+    "alice",
+    "testuser",
+    "oikos",
+    "kairos",
+]
+
+[gauntlet]
+identity_name     = "TESTUSER"
+identity_keywords = ["TESTUSER", "Architect"]
+age_probe_query    = "How old is TESTUSER?"
+age_probe_forbidden = ["35"]
+deprecated_system_probe_query = "Explain LEGACY_SYSTEM."

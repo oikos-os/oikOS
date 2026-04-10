@@ -1,0 +1,8 @@
+services:
+  searxng:
+    image: searxng/searxng
+    ports:
+      - "127.0.0.1:8888:8080"
+    environment:
+      - SEARXNG_TELEMETRY=false
+    restart: unless-stopped

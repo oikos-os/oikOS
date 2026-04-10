@@ -1,0 +1,21 @@
+description = "Session initialization protocol — read project state and deliver briefing"
+
+prompt = """Execute the OIKOS OMEGA session resume protocol. Follow ALL steps in order:
+
+1. Read @{GEMINI.md} for project context and identity
+2. Read @{MEMORY.md} for persistent project state
+3. Read @{OMEGA_SPECS.md} for technical spec awareness (architecture, stack, phase status)
+4. Check logs/sessions/ for recent session logs (*.md files ONLY — never read .jsonl files, they are machine-format and too large for context). Read the 3 most recent KP-ENGINEER*.md session logs. If none exist, read the 3 most recent *.md logs of any instance. Cap: 3 files maximum.
+5. Check messages/ for pending cross-instance communications:
+   - Read any TO_ENGINEER_* files with STATUS: PENDING
+   - Read any DECREE_* or FINAL_HANDOFF_* files created since the last session
+   - Note any EXECUTION_REPORT_* or FROM_ENGINEER_* files if relevant
+6. BEHAVIORAL CHECKPOINT — Echo back these 3 constraints to prove context loaded:
+   a. State your identity (who you are, who you are NOT)
+   b. State the vault air-gap rule
+   c. State the save_memory ban
+7. Report current status: project, phase, completed, next
+8. Report any pending cross-instance messages that need attention
+9. Ask ARCHITECT for today's directive
+
+Format output per VANTABLACK standard. No fluff. Lead with status."""

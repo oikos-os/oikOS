@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <rect width="1200" height="300" fill="#0A0A0A"/>
+  <!-- Mark -->
+  <g transform="translate(30, 18) scale(0.515625)">
+    <circle cx="256" cy="256" r="200" fill="none" stroke="#D4A017" stroke-width="12"/>
+    <path d="M 256 100 L 380 210 L 380 340 L 310 340 L 310 380 L 256 340 L 202 380 L 202 340 L 132 340 L 132 210 Z" fill="none" stroke="#D4A017" stroke-width="12" stroke-linejoin="miter"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="370" y="185" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="120" fill="#D4A017">oikOS</text>
+</svg>

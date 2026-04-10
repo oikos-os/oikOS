@@ -1,0 +1,41 @@
+# Sensitive vault data — air-gapped
+vault/identity/
+
+# Vector database — binary, not useful for context
+memory/lancedb/
+
+# Purgatory — decayed ephemeral data
+memory/purgatory/
+
+# Session logs — block machine-format, allow .md summaries
+logs/sessions/**/*.jsonl
+logs/sessions/**/*.json
+logs/sessions/.current_session.json
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Environment
+.env
+.venv/
+
+# OS artifacts
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Git internals
+.git/
+
+# Build artifacts
+dist/
+build/
+
+# Large data files
+*.db
+*.lance
+*.arrow

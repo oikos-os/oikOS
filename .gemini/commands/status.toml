@@ -1,0 +1,11 @@
+description = "Quick project status — phase, tests, last commit, build order"
+
+prompt = """Report OIKOS OMEGA project status. Read @{MEMORY.md} and output:
+
+1. Current phase and version
+2. Test suite status (count, pass/fail)
+3. Last git commit: !{git log --oneline -1}
+4. Current build order step (what's done, what's next)
+5. Any blockers or pending items
+
+Format as a compact table or bullet list. VANTABLACK standard. No fluff."""

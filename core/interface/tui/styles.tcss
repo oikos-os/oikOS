@@ -1,0 +1,517 @@
+/* oikOS Phosphor Theme — v2 (aesthetic overhaul) */
+
+/* ═══════════════════════════════════════════════════
+   FOUNDATION
+   ═══════════════════════════════════════════════════ */
+
+Screen {
+    background: #0A0A0A;
+    color: #D4A017;
+}
+
+/* Remove ALL default Textual widget borders */
+* {
+    border: none;
+}
+
+Toast {
+    background: #1A1400;
+    border: tall #D4A017;
+    color: #FFB000;
+}
+
+/* ═══════════════════════════════════════════════════
+   HEADER — single line, minimal
+   ═══════════════════════════════════════════════════ */
+
+OikOSHeader {
+    background: #0A0A0A;
+    color: #8B6914;
+    dock: top;
+    height: 1;
+    content-align: left middle;
+}
+
+/* ═══════════════════════════════════════════════════
+   FOOTER — F-key labels
+   ═══════════════════════════════════════════════════ */
+
+ApprovalBar {
+    dock: bottom;
+    height: 1;
+    background: #1A1400;
+    color: #FFB000;
+    padding: 0 1;
+    display: none;
+}
+
+NotificationBar {
+    dock: bottom;
+    height: 1;
+    width: 100%;
+    background: #2A1F05;
+    color: #FFB000;
+    padding: 0 1;
+    display: none;
+}
+
+Footer {
+    background: #0A0A0A;
+    color: #6B5012;
+    dock: bottom;
+    height: 1;
+}
+
+FooterKey > .footer-key--key {
+    color: #8B6914;
+    background: transparent;
+}
+
+FooterKey > .footer-key--description {
+    color: #6B5012;
+}
+
+FooterKey.-view-action > .footer-key--key {
+    border-left: vkey #3A2A00;
+}
+
+FooterKey.-active-view > .footer-key--key {
+    color: #0D0D0D;
+    background: #D4A017;
+}
+
+FooterKey.-active-view > .footer-key--description {
+    color: #FFB000;
+}
+
+/* ═══════════════════════════════════════════════════
+   SIDEBAR — quiet, no borders
+   ═══════════════════════════════════════════════════ */
+
+OikOSSidebar {
+    background: #0A0A0A;
+    width: 22;
+    dock: left;
+    padding: 1 1;
+    border-right: vkey #3A2A00;
+}
+
+OikOSSidebar.collapsed {
+    display: none;
+}
+
+.sidebar-label {
+    color: #6B5012;
+    text-style: none;
+    margin-top: 1;
+}
+
+.sidebar-item {
+    color: #8B6914;
+}
+
+.sidebar-item-active {
+    color: #FFB000;
+}
+
+.sidebar-dot-connected {
+    color: #FFB000;
+}
+
+.sidebar-dot-disconnected {
+    color: #6B5012;
+}
+
+.sidebar-count {
+    color: #6B5012;
+}
+
+/* ═══════════════════════════════════════════════════
+   CONTENT VIEWS — shared
+   ═══════════════════════════════════════════════════ */
+
+#content-area {
+    height: 1fr;
+}
+
+ContentSwitcher {
+    height: 1fr;
+}
+
+LobbyView, ChatView, VaultView, RoomsView, SettingsView, TasksView, AgentsView {
+    height: 1fr;
+}
+
+.view {
+    padding: 1 2;
+    height: 1fr;
+}
+
+.section-label {
+    color: #6B5012;
+    margin-top: 1;
+    margin-bottom: 0;
+}
+
+.section-separator {
+    color: #453510;
+}
+
+.status-line {
+    color: #453510;
+}
+
+.tagline {
+    color: #8B6914;
+}
+
+.doctrine-quote {
+    color: #D4A017;
+}
+
+.activity-time {
+    color: #6B5012;
+}
+
+.activity-text {
+    color: #8B6914;
+}
+
+/* ═══════════════════════════════════════════════════
+   LOBBY — spacious, logo-centered
+   ═══════════════════════════════════════════════════ */
+
+.lobby-logo {
+    margin-bottom: 2;
+}
+
+.lobby-status {
+    color: #453510;
+    margin-top: 1;
+}
+
+.lobby-quote {
+    color: #D4A017;
+    margin-top: 2;
+    margin-bottom: 2;
+}
+
+.lobby-activity {
+    margin-top: 1;
+}
+
+/* ═══════════════════════════════════════════════════
+   CHAT — conversation-first
+   ═══════════════════════════════════════════════════ */
+
+#chat-layout {
+    height: 1fr;
+}
+
+.chat-messages {
+    height: 1fr;
+    overflow-y: auto;
+    padding: 0 1;
+}
+
+.chat-message-user {
+    color: #FFB000;
+    margin-bottom: 1;
+}
+
+.chat-message-agent {
+    color: #D4A017;
+    margin-bottom: 1;
+}
+
+.chat-model-badge {
+    color: #6B5012;
+}
+
+.chat-thinking {
+    color: #8B6914;
+    text-style: italic;
+}
+
+.chat-tool-activity {
+    color: #6B5012;
+    margin-top: 0;
+}
+
+.chat-input-area {
+    dock: bottom;
+    height: auto;
+    max-height: 4;
+    background: #0A0A0A;
+    padding: 0 1;
+}
+
+Input {
+    background: #141005;
+    color: #FFB000;
+    border: tall #3A2A00;
+}
+
+Input:focus {
+    border: tall #6B5012;
+}
+
+Input.-cursor-blink {
+    color: #FFB000;
+}
+
+.chat-input-prompt {
+    color: #8B6914;
+}
+
+.chat-header-model {
+    color: #8B6914;
+}
+
+.chat-header-room {
+    color: #6B5012;
+}
+
+/* ═══════════════════════════════════════════════════
+   VAULT — file tree dim, preview bright
+   ═══════════════════════════════════════════════════ */
+
+DirectoryTree {
+    background: #0A0A0A;
+    color: #8B6914;
+    width: 28;
+    dock: left;
+    padding: 0 1;
+}
+
+DirectoryTree > .directory-tree--folder {
+    color: #8B6914;
+}
+
+DirectoryTree > .directory-tree--file {
+    color: #6B5012;
+}
+
+DirectoryTree:focus > .directory-tree--cursor {
+    color: #FFB000;
+    background: transparent;
+    text-style: none;
+}
+
+.vault-preview {
+    padding: 1 2;
+    color: #D4A017;
+}
+
+.vault-preview-title {
+    color: #FFB000;
+}
+
+.vault-meta {
+    color: #6B5012;
+    dock: bottom;
+    height: 1;
+}
+
+.vault-search Input {
+    background: #0A0A0A;
+    color: #D4A017;
+    border: none;
+}
+
+/* ═══════════════════════════════════════════════════
+   ROOMS — list dim, active glows
+   ═══════════════════════════════════════════════════ */
+
+.room-list {
+    width: 24;
+    dock: left;
+    padding: 1 1;
+}
+
+.room-item {
+    color: #8B6914;
+}
+
+.room-item-active {
+    color: #FFB000;
+}
+
+.room-config {
+    padding: 1 2;
+    color: #D4A017;
+}
+
+.room-config-label {
+    color: #6B5012;
+}
+
+.room-config-value {
+    color: #D4A017;
+}
+
+.room-templates {
+    color: #453510;
+    dock: bottom;
+    height: 3;
+}
+
+/* ═══════════════════════════════════════════════════
+   SETTINGS — grouped, provider dots
+   ═══════════════════════════════════════════════════ */
+
+.settings-group {
+    margin-bottom: 2;
+}
+
+.settings-group-label {
+    color: #8B6914;
+    margin-bottom: 1;
+}
+
+.settings-provider-name {
+    color: #D4A017;
+}
+
+.settings-provider-status {
+    color: #FFB000;
+}
+
+.settings-provider-latency {
+    color: #6B5012;
+}
+
+.settings-provider-disconnected {
+    color: #6B5012;
+}
+
+.settings-theme-active {
+    color: #FFB000;
+}
+
+.settings-theme-inactive {
+    color: #6B5012;
+}
+
+/* ═══════════════════════════════════════════════════
+   TASKS — mostly empty is fine
+   ═══════════════════════════════════════════════════ */
+
+.tasks-empty {
+    color: #453510;
+}
+
+.tasks-running {
+    color: #FFB000;
+}
+
+.tasks-idle {
+    color: #6B5012;
+}
+
+.tasks-staged {
+    color: #D4A017;
+}
+
+/* ═══════════════════════════════════════════════════
+   AGENTS — clean list, expand on select
+   ═══════════════════════════════════════════════════ */
+
+.agents-toolset {
+    color: #8B6914;
+}
+
+.agents-toolset-active {
+    color: #FFB000;
+}
+
+.agents-tool-name {
+    color: #D4A017;
+}
+
+.agents-tool-description {
+    color: #6B5012;
+}
+
+.agents-privacy-never-leave {
+    color: #FFB000;
+}
+
+.agents-privacy-sensitive {
+    color: #D4A017;
+}
+
+.agents-privacy-safe {
+    color: #8B6914;
+}
+
+/* ═══════════════════════════════════════════════════
+   SELECT / DROPDOWN
+   ═══════════════════════════════════════════════════ */
+
+Select {
+    background: #0A0A0A;
+    color: #D4A017;
+    border: none;
+}
+
+SelectCurrent {
+    background: #0A0A0A;
+    color: #D4A017;
+}
+
+SelectOverlay {
+    background: #0A0A0A;
+    border: solid #453510;
+}
+
+OptionList > .option-list--option-highlighted {
+    color: #FFB000;
+    background: transparent;
+}
+
+/* ═══════════════════════════════════════════════════
+   THEME VARIANTS — Green
+   ═══════════════════════════════════════════════════ */
+
+Screen.theme-green { color: #33FF33; }
+Screen.theme-green OikOSHeader { color: #1A8C1A; }
+Screen.theme-green ApprovalBar { background: #001A00; color: #33FF33; }
+Screen.theme-green NotificationBar { background: #001A00; color: #33FF33; }
+Screen.theme-green Footer { color: #0D5C0D; }
+Screen.theme-green .sidebar-item { color: #1A8C1A; }
+Screen.theme-green .sidebar-item-active { color: #33FF33; }
+Screen.theme-green Input { color: #33FF33; background: #0A140A; border: tall #0D5C0D; }
+Screen.theme-green Input:focus { border: tall #1A8C1A; }
+Screen.theme-green .chat-message-user { color: #33FF33; }
+Screen.theme-green .chat-message-agent { color: #1A8C1A; }
+Screen.theme-green .doctrine-quote { color: #33FF33; }
+Screen.theme-green Toast { color: #33FF33; background: #0A140A; border: tall #1A8C1A; }
+Screen.theme-green OikOSSidebar { border-right: vkey #0D5C0D; }
+Screen.theme-green FooterKey > .footer-key--key { color: #1A8C1A; }
+Screen.theme-green FooterKey > .footer-key--description { color: #0D5C0D; }
+Screen.theme-green FooterKey.-active-view > .footer-key--key { color: #0D0D0D; background: #33FF33; }
+Screen.theme-green FooterKey.-active-view > .footer-key--description { color: #33FF33; }
+
+/* ═══════════════════════════════════════════════════
+   THEME VARIANTS — White
+   ═══════════════════════════════════════════════════ */
+
+Screen.theme-white { color: #E0E0E0; }
+Screen.theme-white OikOSHeader { color: #808080; }
+Screen.theme-white ApprovalBar { background: #1A1A1A; color: #E0E0E0; }
+Screen.theme-white NotificationBar { background: #1A1A1A; color: #E0E0E0; }
+Screen.theme-white Footer { color: #606060; }
+Screen.theme-white .sidebar-item { color: #808080; }
+Screen.theme-white .sidebar-item-active { color: #E0E0E0; }
+Screen.theme-white Input { color: #E0E0E0; background: #1A1A1A; border: tall #404040; }
+Screen.theme-white Input:focus { border: tall #808080; }
+Screen.theme-white .chat-message-user { color: #E0E0E0; }
+Screen.theme-white .chat-message-agent { color: #B0B0B0; }
+Screen.theme-white .doctrine-quote { color: #E0E0E0; }
+Screen.theme-white Toast { color: #E0E0E0; background: #1A1A1A; border: tall #808080; }
+Screen.theme-white OikOSSidebar { border-right: vkey #404040; }
+Screen.theme-white FooterKey > .footer-key--key { color: #808080; }
+Screen.theme-white FooterKey > .footer-key--description { color: #606060; }
+Screen.theme-white FooterKey.-active-view > .footer-key--key { color: #0D0D0D; background: #E0E0E0; }
+Screen.theme-white FooterKey.-active-view > .footer-key--description { color: #E0E0E0; }

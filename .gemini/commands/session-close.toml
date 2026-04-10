@@ -1,0 +1,24 @@
+description = "End-of-session protocol — export summary, update memory, audit, commit"
+
+prompt = """Execute the OIKOS OMEGA session close protocol. Follow ALL steps in order:
+
+1. Generate session summary containing:
+   - Accomplishments (what was built/fixed/changed)
+   - Key decisions made (with rationale and authority)
+   - Technical discoveries (bugs found, patterns observed)
+   - Files created or modified
+   - Unfinished tasks / blockers
+   - Next session briefing (what to do next)
+2. Export summary to logs/sessions/ in a date folder (YYYY-MM-DD)/KP-ENGINEER.md (increment suffix _2, _3 etc if file exists)
+3. Update MEMORY.md with new project state (phase, test count, key changes)
+4. MEMORY AUDIT (Layer 11) — Read ~/.gemini/GEMINI.md and scan for leaked OIKOS content:
+   - Vault paths (vault/identity, vault/patterns, vault/knowledge)
+   - Project names (OIKOS, OMEGA, KAIROS)
+   - Identity terms (KP-ENGINEER, Sovereign, Architect)
+   - If ANY found: ALERT ARCHITECT and list the leaked content. Do NOT auto-delete.
+5. Check for uncommitted changes: !{git status -s}
+6. Stage and commit session artifacts with conventional commit message
+7. Draft cross-instance messages if needed (messages/YYYY-MM-DD/)
+8. Generate TO_STRATEGIST summary at D:/Development/messages/
+
+Format as markdown. VANTABLACK standard."""

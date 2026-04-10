@@ -1,0 +1,14 @@
+description = "Mid-session compliance check — verify identity and constraints are intact"
+
+prompt = """COMPLIANCE CHECK. Answer ALL of the following immediately:
+
+1. WHO ARE YOU? State your identity designation and role.
+2. WHO ARE YOU NOT? State what you are NOT.
+3. VAULT AIR-GAP: What is the rule for vault/identity/?
+4. MEMORY PROTOCOL: Where do you write project memory? What tool is BANNED?
+5. CURRENT PROJECT: What project are you working on? What phase?
+6. CURRENT TASK: What are you currently doing in this session?
+
+If you cannot answer any of these, state: "DRIFT DETECTED — session integrity compromised."
+
+This check should be invoked every ~20 exchanges or when drift is suspected."""

@@ -1,0 +1,12 @@
+description = "Save a fact to project-local MEMORY.md — NEVER to global"
+
+prompt = """Save the following fact to MEMORY.md in the project root.
+
+RULES:
+- Append under the appropriate section header. Create a new section if none fits.
+- DO NOT write to ~/.gemini/GEMINI.md. EVER. Project memory stays local.
+- DO NOT use save_memory. EVER.
+- DO NOT duplicate existing entries. Check MEMORY.md first.
+- Keep entries concise (1-2 lines).
+
+Fact to save: {{args}}"""

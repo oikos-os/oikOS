@@ -1,0 +1,65 @@
+rules:
+  - id: os-kill-without-platform-guard
+    patterns:
+      - pattern: os.kill(...)
+      - pattern-not-inside: |
+          if sys.platform == "win32":
+              ...
+      - pattern-not-inside: |
+          if sys.platform != "win32":
+              ...
+    message: >
+      os.kill() behaves differently on Windows. signal 0 sends CTRL_C_EVENT
+      (kills the process), SIGTERM calls TerminateProcess (no graceful shutdown).
+      Wrap in a sys.platform guard with appropriate Windows signal.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: portability
+      references:
+        - https://bugs.python.org/issue14480
+        - https://bugs.python.org/issue23948
+
+  - id: unix-only-os-functions
+    pattern-either:
+      - pattern: os.fork(...)
+      - pattern: os.getuid(...)
+      - pattern: os.getgid(...)
+      - pattern: os.setsid(...)
+      - pattern: os.setuid(...)
+      - pattern: os.setgid(...)
+      - pattern: os.getppid(...)
+      - pattern: os.killpg(...)
+    message: >
+      This os function is Unix-only and will raise AttributeError on Windows.
+      Guard with sys.platform or use a cross-platform alternative.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: portability
+
+  - id: signal-unix-only
+    patterns:
+      - pattern-either:
+          - pattern: signal.SIGKILL
+          - pattern: signal.SIGUSR1
+          - pattern: signal.SIGUSR2
+          - pattern: signal.SIGSTOP
+          - pattern: signal.SIGHUP
+          - pattern: signal.SIGQUIT
+          - pattern: signal.SIGALRM
+      - pattern-not-inside: |
+          if sys.platform == "win32":
+              ...
+          else:
+              ...
+      - pattern-not-inside: |
+          if sys.platform != "win32":
+              ...
+    message: >
+      This signal constant does not exist on Windows. Use signal.SIGTERM,
+      signal.CTRL_C_EVENT, signal.CTRL_BREAK_EVENT, or signal.SIGBREAK instead.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: portability
